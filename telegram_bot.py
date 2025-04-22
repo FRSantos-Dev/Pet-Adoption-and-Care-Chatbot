@@ -785,4 +785,8 @@ def main():
         interview.db_manager.close()
 
 if __name__ == '__main__':
-    main() 
+    main()
+
+
+def db_config():
+    return None

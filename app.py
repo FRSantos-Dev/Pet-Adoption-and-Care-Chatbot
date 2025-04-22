@@ -1,9 +1,9 @@
-from flask import Flask, render_template, request, jsonify
-from geopy.geocoders import Nominatim
+import flask
+import geopy.geocoders
 import json
 import os
 
-app = Flask(__name__)
+app = flask.Flask(__name__)
 
 # Load pet care information
 with open('data/pet_care.json', 'r', encoding='utf-8') as f:
@@ -23,17 +23,17 @@ def get_pet_care_info(topic):
 
 @app.route('/')
 def home():
-    return render_template('index.html')
+    return flask.render_template('index.html')
 
 @app.route('/chat', methods=['POST'])
 def chat():
-    data = request.json
+    data = flask.request.json
     message = data.get('message', '').lower()
     
     if 'shelter' in message or 'adopt' in message:
         location = data.get('location', '')
         shelters = get_nearby_shelters(location)
-        return jsonify({
+        return flask.jsonify({
             'response': 'Here are some nearby shelters:',
             'shelters': shelters
         })
@@ -48,12 +48,12 @@ def chat():
             topic = 'adaptation'
         
         info = get_pet_care_info(topic)
-        return jsonify({
+        return flask.jsonify({
             'response': info
         })
     
     else:
-        return jsonify({
+        return flask.jsonify({
             'response': "I can help you with information about pet adoption, nearby shelters, and pet care. What would you like to know?"
         })
 
