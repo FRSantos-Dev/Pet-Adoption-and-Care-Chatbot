@@ -54,52 +54,14 @@ class DatabaseInterface(ABC):
     def save_interview(self, user_info: UserInfo, animal_type: str, 
                       animal_id: Optional[int], answers: Dict[str, str], 
                       pdf_path: str, image_paths: List[str]) -> int:
-        """Save a complete interview to the database.
-        
-        Args:
-            user_info: Information about the interviewee.
-            animal_type: Type of animal (e.g., 'cat', 'dog').
-            animal_id: ID of the selected animal, if any.
-            answers: Dictionary of question-answer pairs.
-            pdf_path: Path to the generated PDF file.
-            image_paths: List of paths to uploaded images.
-            
-        Returns:
-            int: The ID of the saved interview.
-            
-        Raises:
-            Exception: If saving fails.
-        """
         pass
 
     @abstractmethod
     def get_interview(self, interview_id: int) -> Optional[InterviewResult]:
-        """Retrieve a complete interview by ID.
-        
-        Args:
-            interview_id: The ID of the interview to retrieve.
-            
-        Returns:
-            Optional[InterviewResult]: The interview data if found, None otherwise.
-            
-        Raises:
-            Exception: If retrieval fails.
-        """
         pass
 
     @abstractmethod
     def get_interviews_by_user(self, telegram_id: int) -> List[InterviewInfo]:
-        """Retrieve all interviews for a specific user.
-        
-        Args:
-            telegram_id: The Telegram ID of the user.
-            
-        Returns:
-            List[InterviewInfo]: List of interviews for the user.
-            
-        Raises:
-            Exception: If retrieval fails.
-        """
         pass
 
     @abstractmethod

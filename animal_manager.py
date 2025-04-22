@@ -80,7 +80,6 @@ class AnimalManager:
         try:
             for animal in self.animals[animal_type]:
                 if animal['id'] == animal_id:
-                    # Convert to relative path if it's an absolute path
                     if os.path.isabs(photo_path):
                         photo_path = os.path.relpath(photo_path, os.path.dirname(self.data_file))
                     animal['photos'].append(photo_path)

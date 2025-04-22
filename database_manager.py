@@ -4,7 +4,6 @@ import json
 from dotenv import load_dotenv
 import logging
 
-# Load environment variables
 load_dotenv()
 
 class DatabaseManager:
@@ -16,11 +15,11 @@ class DatabaseManager:
     def connect(self):
         """Establish database connection"""
         try:
-            # Create data directory if it doesn't exist
+            
             os.makedirs('data', exist_ok=True)
             
             self.conn = sqlite3.connect('data/pet_adoption.db')
-            # Enable dictionary cursor
+            
             self.conn.row_factory = sqlite3.Row
             self.cursor = self.conn.cursor()
             self._create_tables()
@@ -45,7 +44,6 @@ class DatabaseManager:
                 )
             """)
 
-            # Create interviews table
             self.cursor.execute("""
                 CREATE TABLE IF NOT EXISTS interviews (
                     id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -85,7 +83,6 @@ class DatabaseManager:
                       status: str = 'pending') -> int:
         """Save interview information"""
         try:
-            # Convert answers dict to JSON string for storage
             answers_json = json.dumps(answers)
             self.cursor.execute("""
                 INSERT INTO interviews 
@@ -109,7 +106,7 @@ class DatabaseManager:
                 ORDER BY i.created_at DESC
             """, (telegram_id,))
             rows = self.cursor.fetchall()
-            # Convert rows to dictionaries and parse JSON answers
+            
             return [{**dict(row), 'answers': json.loads(row['answers'])} for row in rows]
         except Exception as e:
             logging.error(f"Error getting user interviews: {str(e)}")

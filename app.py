@@ -5,13 +5,10 @@ import os
 
 app = flask.Flask(__name__)
 
-# Load pet care information
 with open('data/pet_care.json', 'r', encoding='utf-8') as f:
     pet_care_data = json.load(f)
 
 def get_nearby_shelters(location):
-    # This is a placeholder function - in a real application, you would integrate with a shelter database API
-    # For now, we'll return some example shelters
     return [
         {"name": "Happy Paws Shelter", "address": "123 Pet Street, " + location, "distance": "2.5 miles"},
         {"name": "Furry Friends Rescue", "address": "456 Animal Avenue, " + location, "distance": "3.1 miles"},
