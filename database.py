@@ -42,7 +42,7 @@ class PostgreSQLDatabase(DatabaseInterface):
         """Create necessary tables if they don't exist"""
         try:
             with self.conn.cursor() as cur:
-                # Create interviewees table
+                
                 cur.execute("""
                     CREATE TABLE IF NOT EXISTS interviewees (
                         id SERIAL PRIMARY KEY,
@@ -54,7 +54,7 @@ class PostgreSQLDatabase(DatabaseInterface):
                     )
                 """)
 
-                # Create interviews table
+                
                 cur.execute("""
                     CREATE TABLE IF NOT EXISTS interviews (
                         id SERIAL PRIMARY KEY,
@@ -67,7 +67,7 @@ class PostgreSQLDatabase(DatabaseInterface):
                     )
                 """)
 
-                # Create answers table
+                
                 cur.execute("""
                     CREATE TABLE IF NOT EXISTS answers (
                         id SERIAL PRIMARY KEY,
@@ -78,7 +78,7 @@ class PostgreSQLDatabase(DatabaseInterface):
                     )
                 """)
 
-                # Create files table
+                
                 cur.execute("""
                     CREATE TABLE IF NOT EXISTS files (
                         id SERIAL PRIMARY KEY,
@@ -101,7 +101,7 @@ class PostgreSQLDatabase(DatabaseInterface):
         """Save a complete interview to the database"""
         try:
             with self.conn.cursor() as cur:
-                # Save or update interviewee
+                
                 cur.execute("""
                     INSERT INTO interviewees (telegram_id, username, first_name, last_name)
                     VALUES (%s, %s, %s, %s)
@@ -114,7 +114,7 @@ class PostgreSQLDatabase(DatabaseInterface):
                      user_info['first_name'], user_info['last_name']))
                 interviewee_id = cur.fetchone()[0]
 
-                # Save interview
+                
                 cur.execute("""
                     INSERT INTO interviews (interviewee_id, animal_type, animal_id, completed_at)
                     VALUES (%s, %s, %s, %s)
@@ -122,14 +122,14 @@ class PostgreSQLDatabase(DatabaseInterface):
                 """, (interviewee_id, animal_type, animal_id, datetime.now()))
                 interview_id = cur.fetchone()[0]
 
-                # Save answers
+                
                 for question, answer in answers.items():
                     cur.execute("""
                         INSERT INTO answers (interview_id, question, answer)
                         VALUES (%s, %s, %s)
                     """, (interview_id, question, answer))
 
-                # Save PDF file
+                
                 cur.execute("""
                     INSERT INTO files (interview_id, file_type, file_path)
                     VALUES (%s, %s, %s)
@@ -153,7 +153,7 @@ class PostgreSQLDatabase(DatabaseInterface):
         """Retrieve a complete interview by ID"""
         try:
             with self.conn.cursor() as cur:
-                # Get interview details
+                
                 cur.execute("""
                     SELECT i.*, it.telegram_id, it.username, it.first_name, it.last_name
                     FROM interviews i
@@ -165,7 +165,7 @@ class PostgreSQLDatabase(DatabaseInterface):
                 if not interview_data:
                     return None
 
-                # Convert interview data to InterviewInfo
+                
                 interview_info: InterviewInfo = {
                     'id': interview_data[0],
                     'interviewee_id': interview_data[1],
@@ -176,7 +176,7 @@ class PostgreSQLDatabase(DatabaseInterface):
                     'completed_at': interview_data[6]
                 }
 
-                # Get answers
+                
                 cur.execute("""
                     SELECT question, answer
                     FROM answers
@@ -184,7 +184,7 @@ class PostgreSQLDatabase(DatabaseInterface):
                 """, (interview_id,))
                 answers = dict(cur.fetchall())
 
-                # Get files
+                
                 cur.execute("""
                     SELECT id, interview_id, file_type, file_path, created_at
                     FROM files
@@ -192,7 +192,7 @@ class PostgreSQLDatabase(DatabaseInterface):
                 """, (interview_id,))
                 files_data = cur.fetchall()
 
-                # Convert files data to FileInfo
+                
                 files: List[FileInfo] = [
                     {
                         'id': file_data[0],
@@ -226,7 +226,7 @@ class PostgreSQLDatabase(DatabaseInterface):
                 """, (telegram_id,))
                 interviews_data = cur.fetchall()
 
-                # Convert interviews data to InterviewInfo
+                
                 return [
                     {
                         'id': interview_data[0],
