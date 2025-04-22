@@ -295,8 +295,11 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
             "Por favor, tente novamente mais tarde."
         )
 
-async def show_available_animals(update: Update, context: ContextTypes.DEFAULT_TYPE, animal_type):
+async def show_available_animals(update: Update, context: ContextTypes.DEFAULT_TYPE, animal_type: str):
     try:
+        if animal_type not in ['dog', 'cat']:
+            raise ValueError(f"Invalid animal type: {animal_type}")
+
         animals = animal_manager.get_available_animals(animal_type)
         if not animals:
             await update.callback_query.message.reply_text(
@@ -305,6 +308,7 @@ async def show_available_animals(update: Update, context: ContextTypes.DEFAULT_T
             return
 
         # Send message about available animals
+        animal_emoji = "🐕" if animal_type == "dog" else "🐈"
         await update.callback_query.message.reply_text(
             f"Aqui estão os {animal_type}s disponíveis para adoção:"
         )
@@ -322,7 +326,7 @@ async def show_available_animals(update: Update, context: ContextTypes.DEFAULT_T
                                 await context.bot.send_photo(
                                     chat_id=update.effective_chat.id,
                                     photo=compressed_image,
-                                    caption=f"🐱 {animal['name']} - {animal['breed']}\nIdade: {animal['age']} anos\nGênero: {animal['gender']}\nPorte: {animal['size']}"
+                                    caption=f"{animal_emoji} {animal['name']} - {animal['breed']}\nIdade: {animal['age']} anos\nGênero: {animal['gender']}\nPorte: {animal['size']}"
                                 )
                         except Exception as e:
                             logger.error(f"Error sending animal photo: {str(e)}")
@@ -400,30 +404,67 @@ async def button(update: Update, context: ContextTypes.DEFAULT_TYPE):
             )
         
         elif query.data.startswith('animal_'):
-            animal_type = query.data.split('_')[1]
-            await show_available_animals(update, context, animal_type)
+            try:
+                animal_type = query.data.split('_')[1]
+                if animal_type not in ['dog', 'cat']:
+                    raise ValueError(f"Invalid animal type: {animal_type}")
+                await show_available_animals(update, context, animal_type)
+            except Exception as e:
+                logger.error(f"Error in animal selection: {str(e)}")
+                await query.message.reply_text(
+                    "Desculpe, ocorreu um erro ao mostrar os animais. "
+                    "Por favor, tente novamente."
+                )
         
         elif query.data.startswith('list_'):
-            animal_type = query.data.split('_')[1]
-            await show_available_animals(update, context, animal_type)
+            try:
+                animal_type = query.data.split('_')[1]
+                if animal_type not in ['dog', 'cat']:
+                    raise ValueError(f"Invalid animal type: {animal_type}")
+                await show_available_animals(update, context, animal_type)
+            except Exception as e:
+                logger.error(f"Error listing animals: {str(e)}")
+                await query.message.reply_text(
+                    "Desculpe, ocorreu um erro ao listar os animais. "
+                    "Por favor, tente novamente."
+                )
         
         elif query.data.startswith('select_animal_'):
-            _, _, animal_type, animal_id = query.data.split('_')
-            await show_animal_details(update, context, animal_type, int(animal_id))
+            try:
+                _, _, animal_type, animal_id = query.data.split('_')
+                if animal_type not in ['dog', 'cat']:
+                    raise ValueError(f"Invalid animal type: {animal_type}")
+                await show_animal_details(update, context, animal_type, int(animal_id))
+            except Exception as e:
+                logger.error(f"Error showing animal details: {str(e)}")
+                await query.message.reply_text(
+                    "Desculpe, ocorreu um erro ao mostrar os detalhes do animal. "
+                    "Por favor, tente novamente."
+                )
         
         elif query.data.startswith('start_interview_'):
-            _, _, animal_type, animal_id = query.data.split('_')
-            user_info = {
-                'username': update.effective_user.username,
-                'first_name': update.effective_user.first_name,
-                'last_name': update.effective_user.last_name
-            }
-            first_question = interview.start_interview(user_info, animal_type, int(animal_id))
-            await query.message.reply_text(
-                f"Ótimo! Vamos começar a entrevista para adoção.\n\n"
-                f"{first_question}"
-            )
-            logger.info(f"User {update.effective_user.id} started interview for {animal_type} {animal_id}")
+            try:
+                _, _, animal_type, animal_id = query.data.split('_')
+                if animal_type not in ['dog', 'cat']:
+                    raise ValueError(f"Invalid animal type: {animal_type}")
+                
+                user_info = {
+                    'username': update.effective_user.username,
+                    'first_name': update.effective_user.first_name,
+                    'last_name': update.effective_user.last_name
+                }
+                first_question = interview.start_interview(user_info, animal_type, int(animal_id))
+                await query.message.reply_text(
+                    f"Ótimo! Vamos começar a entrevista para adoção.\n\n"
+                    f"{first_question}"
+                )
+                logger.info(f"User {update.effective_user.id} started interview for {animal_type} {animal_id}")
+            except Exception as e:
+                logger.error(f"Error starting interview: {str(e)}")
+                await query.message.reply_text(
+                    "Desculpe, ocorreu um erro ao iniciar a entrevista. "
+                    "Por favor, tente novamente."
+                )
     
     except Exception as e:
         logger.error(f"Error in button handler: {str(e)}")
