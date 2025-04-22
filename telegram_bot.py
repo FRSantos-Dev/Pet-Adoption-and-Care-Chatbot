@@ -11,6 +11,7 @@ from animal_manager import AnimalManager
 from image_compressor import ImageCompressor
 from database_interface import DatabaseInterface, UserInfo
 from typing import Dict, Any, Optional, List
+from database_manager import DatabaseManager
 
 # Configure logging
 logging.basicConfig(
@@ -50,14 +51,8 @@ animal_manager = AnimalManager(os.path.join(DATA_DIR, 'animals.json'))
 # Initialize image compressor
 image_compressor = ImageCompressor(max_size_kb=500, quality=85)
 
-# Database configuration
-db_config = {
-    'DB_NAME': os.getenv('DB_NAME', 'pet_adoption'),
-    'DB_USER': os.getenv('DB_USER', 'postgres'),
-    'DB_PASSWORD': os.getenv('DB_PASSWORD', 'postgres'),
-    'DB_HOST': os.getenv('DB_HOST', 'localhost'),
-    'DB_PORT': os.getenv('DB_PORT', '5432')
-}
+# Initialize database manager
+db_manager = DatabaseManager()
 
 # Interview questions in Portuguese
 QUESTIONS = [
@@ -175,7 +170,7 @@ class AdoptionInterview:
             logger.error(f"Error generating PDF: {str(e)}")
             raise
 
-# Create interview instance with database manager
+# Initialize interview system
 interview = AdoptionInterview(db_manager)
 
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
