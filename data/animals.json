@@ -58,10 +58,199 @@
     "cats": [
         {
             "id": 1,
-            "name": "Mingau",
+            "name": "Amora",
+            "breed": "SRD",
+            "age": 2,
+            "gender": "Fêmea",
+            "size": "Médio",
+            "health": {
+                "vaccinated": true,
+                "dewormed": true,
+                "castrated": true,
+                "special_needs": false,
+                "health_notes": "Saudável, sem problemas de saúde"
+            },
+            "behavior": {
+                "temperament": "Amigável",
+                "energy_level": "Média",
+                "good_with_kids": true,
+                "good_with_other_cats": true,
+                "good_with_dogs": true,
+                "litter_trained": true,
+                "behavior_notes": "Muito carinhosa e brincalhona"
+            },
+            "history": "Resgatada das ruas, já castrada e vacinada",
+            "adoption_status": "Disponível",
+            "photos": ["images/cats/Amora.jpg"]
+        },
+        {
+            "id": 2,
+            "name": "Claytinho",
+            "breed": "SRD",
+            "age": 1,
+            "gender": "Macho",
+            "size": "Médio",
+            "health": {
+                "vaccinated": true,
+                "dewormed": true,
+                "castrated": true,
+                "special_needs": false,
+                "health_notes": "Saudável, sem problemas de saúde"
+            },
+            "behavior": {
+                "temperament": "Curioso",
+                "energy_level": "Alta",
+                "good_with_kids": true,
+                "good_with_other_cats": true,
+                "good_with_dogs": true,
+                "litter_trained": true,
+                "behavior_notes": "Adora brincar e explorar"
+            },
+            "history": "Resgatado de um abandono",
+            "adoption_status": "Disponível",
+            "photos": ["images/cats/Claytinho.jpg"]
+        },
+        {
+            "id": 3,
+            "name": "Luna",
             "breed": "SRD",
             "age": 3,
+            "gender": "Fêmea",
+            "size": "Médio",
+            "health": {
+                "vaccinated": true,
+                "dewormed": true,
+                "castrated": true,
+                "special_needs": false,
+                "health_notes": "Saudável, sem problemas de saúde"
+            },
+            "behavior": {
+                "temperament": "Calma",
+                "energy_level": "Baixa",
+                "good_with_kids": true,
+                "good_with_other_cats": true,
+                "good_with_dogs": true,
+                "litter_trained": true,
+                "behavior_notes": "Muito tranquila e carinhosa"
+            },
+            "history": "Resgatada de um abandono",
+            "adoption_status": "Disponível",
+            "photos": ["images/cats/Luna.jpg"]
+        },
+        {
+            "id": 4,
+            "name": "Meaw",
+            "breed": "SRD",
+            "age": 2,
             "gender": "Macho",
+            "size": "Médio",
+            "health": {
+                "vaccinated": true,
+                "dewormed": true,
+                "castrated": true,
+                "special_needs": false,
+                "health_notes": "Saudável, sem problemas de saúde"
+            },
+            "behavior": {
+                "temperament": "Brincalhão",
+                "energy_level": "Alta",
+                "good_with_kids": true,
+                "good_with_other_cats": true,
+                "good_with_dogs": true,
+                "litter_trained": true,
+                "behavior_notes": "Adora brincar e correr"
+            },
+            "history": "Resgatado das ruas",
+            "adoption_status": "Disponível",
+            "photos": ["images/cats/Meaw.jpg"]
+        },
+        {
+            "id": 5,
+            "name": "Luke",
+            "breed": "SRD",
+            "age": 1,
+            "gender": "Macho",
+            "size": "Médio",
+            "health": {
+                "vaccinated": true,
+                "dewormed": true,
+                "castrated": true,
+                "special_needs": false,
+                "health_notes": "Saudável, sem problemas de saúde"
+            },
+            "behavior": {
+                "temperament": "Amigável",
+                "energy_level": "Média",
+                "good_with_kids": true,
+                "good_with_other_cats": true,
+                "good_with_dogs": true,
+                "litter_trained": true,
+                "behavior_notes": "Muito sociável e carinhoso"
+            },
+            "history": "Resgatado de um abandono",
+            "adoption_status": "Disponível",
+            "photos": ["images/cats/Luke.jpg"]
+        },
+        {
+            "id": 6,
+            "name": "Logan",
+            "breed": "SRD",
+            "age": 2,
+            "gender": "Macho",
+            "size": "Grande",
+            "health": {
+                "vaccinated": true,
+                "dewormed": true,
+                "castrated": true,
+                "special_needs": false,
+                "health_notes": "Saudável, sem problemas de saúde"
+            },
+            "behavior": {
+                "temperament": "Calmo",
+                "energy_level": "Baixa",
+                "good_with_kids": true,
+                "good_with_other_cats": true,
+                "good_with_dogs": true,
+                "litter_trained": true,
+                "behavior_notes": "Muito tranquilo e carinhoso"
+            },
+            "history": "Resgatado das ruas",
+            "adoption_status": "Disponível",
+            "photos": ["images/cats/Logan.jpg"]
+        },
+        {
+            "id": 7,
+            "name": "Tigrinho",
+            "breed": "SRD",
+            "age": 1,
+            "gender": "Macho",
+            "size": "Médio",
+            "health": {
+                "vaccinated": true,
+                "dewormed": true,
+                "castrated": true,
+                "special_needs": false,
+                "health_notes": "Saudável, sem problemas de saúde"
+            },
+            "behavior": {
+                "temperament": "Brincalhão",
+                "energy_level": "Alta",
+                "good_with_kids": true,
+                "good_with_other_cats": true,
+                "good_with_dogs": true,
+                "litter_trained": true,
+                "behavior_notes": "Adora brincar e explorar"
+            },
+            "history": "Resgatado de um abandono",
+            "adoption_status": "Disponível",
+            "photos": ["images/cats/Tigrinho.jpg"]
+        },
+        {
+            "id": 8,
+            "name": "Frida",
+            "breed": "SRD",
+            "age": 3,
+            "gender": "Fêmea",
             "size": "Médio",
             "health": {
                 "vaccinated": true,
@@ -75,13 +264,40 @@
                 "energy_level": "Média",
                 "good_with_kids": true,
                 "good_with_other_cats": true,
-                "good_with_dogs": false,
+                "good_with_dogs": true,
                 "litter_trained": true,
                 "behavior_notes": "Gosta de carinho e brincadeiras"
             },
-            "history": "Resgatado de um abandono",
+            "history": "Resgatada das ruas",
             "adoption_status": "Disponível",
-            "photos": []
+            "photos": ["images/cats/Frida.jpg"]
+        },
+        {
+            "id": 9,
+            "name": "Filomena",
+            "breed": "SRD",
+            "age": 2,
+            "gender": "Fêmea",
+            "size": "Médio",
+            "health": {
+                "vaccinated": true,
+                "dewormed": true,
+                "castrated": true,
+                "special_needs": false,
+                "health_notes": "Saudável, sem problemas de saúde"
+            },
+            "behavior": {
+                "temperament": "Amigável",
+                "energy_level": "Média",
+                "good_with_kids": true,
+                "good_with_other_cats": true,
+                "good_with_dogs": true,
+                "litter_trained": true,
+                "behavior_notes": "Muito carinhosa e sociável"
+            },
+            "history": "Resgatada de um abandono",
+            "adoption_status": "Disponível",
+            "photos": ["images/cats/Filomena.jpg"]
         }
     ],
     "others": [

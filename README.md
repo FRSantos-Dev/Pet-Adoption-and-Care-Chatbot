@@ -1,49 +1,66 @@
 # Pet Adoption and Care Chatbot
 
-A virtual assistant that helps users with pet adoption information, nearby shelters, and essential pet care guidance.
+A Telegram bot for managing pet adoption interviews and care information.
 
 ## Features
 
-- Information about the pet adoption process
-- Location-based shelter finder
-- Pet care guidance (feeding, vaccination, adaptation)
-- User-friendly chat interface
+- View available animals (cats and dogs)
+- Start adoption interviews
+- Generate PDF reports of interviews
+- Store interview data in PostgreSQL database
+- Send interview results to bot owner
 
-## Setup
+## Installation
 
-1. Clone this repository
-2. Install the required dependencies:
-   ```bash
-   pip install -r requirements.txt
-   ```
-3. Run the application:
-   ```bash
-   python app.py
-   ```
-4. Open your web browser and navigate to `http://localhost:5000`
+1. Clone the repository:
+```bash
+git clone https://github.com/yourusername/Pet-Adoption-and-Care-Chatbot.git
+cd Pet-Adoption-and-Care-Chatbot
+```
+
+2. Create a virtual environment and activate it:
+```bash
+python -m venv venv
+source venv/bin/activate  # On Windows: venv\Scripts\activate
+```
+
+3. Install dependencies:
+```bash
+pip install -r requirements.txt
+```
+
+4. Create a PostgreSQL database:
+```sql
+CREATE DATABASE pet_adoption;
+```
+
+5. Configure the environment variables:
+- Copy `.env.example` to `.env`
+- Update the values in `.env` with your configuration:
+  - Database credentials
+  - Telegram bot token
+  - Bot owner ID
 
 ## Usage
 
-The chatbot can help you with:
-- Finding nearby pet shelters
-- Getting information about pet care
-- Learning about the adoption process
-- Understanding feeding and vaccination requirements
-- Tips for helping pets adapt to their new home
+1. Start the bot:
+```bash
+python telegram_bot.py
+```
 
-## Example Questions
+2. In Telegram:
+- Search for your bot
+- Send `/start` to begin
+- Follow the prompts to view animals and start interviews
 
-- "Where can I find shelters near me?"
-- "What do I need to know about pet care?"
-- "How often should I feed my pet?"
-- "What vaccinations does my pet need?"
-- "How can I help my pet adapt to a new home?"
+## Project Structure
 
-## Note
+- `telegram_bot.py`: Main bot implementation
+- `database.py`: Database management
+- `animal_manager.py`: Animal data management
+- `data/`: Directory for animal data and images
+- `interviews/`: Directory for generated PDFs
 
-This is a demo version. In a production environment, you would want to:
-- Integrate with a real shelter database API
-- Add user location detection
-- Implement more sophisticated natural language processing
-- Add a proper database for storing information
-- Include more detailed pet care information
+## License
+
+MIT License
