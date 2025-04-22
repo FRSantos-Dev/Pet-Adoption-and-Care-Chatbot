@@ -1,0 +1,116 @@
+{
+    "dogs": [
+        {
+            "id": 1,
+            "name": "Rex",
+            "breed": "Labrador Retriever",
+            "age": 2,
+            "gender": "Macho",
+            "size": "Grande",
+            "health": {
+                "vaccinated": true,
+                "dewormed": true,
+                "castrated": true,
+                "special_needs": false,
+                "health_notes": "Saudável, sem problemas de saúde"
+            },
+            "behavior": {
+                "temperament": "Amigável",
+                "energy_level": "Alta",
+                "good_with_kids": true,
+                "good_with_other_dogs": true,
+                "good_with_cats": true,
+                "training_level": "Básico",
+                "behavior_notes": "Muito brincalhão e carinhoso"
+            },
+            "history": "Resgatado das ruas, já castrado e vacinado",
+            "adoption_status": "Disponível",
+            "photos": []
+        },
+        {
+            "id": 2,
+            "name": "Luna",
+            "breed": "Vira-lata",
+            "age": 1,
+            "gender": "Fêmea",
+            "size": "Médio",
+            "health": {
+                "vaccinated": true,
+                "dewormed": true,
+                "castrated": true,
+                "special_needs": false,
+                "health_notes": "Saudável, em tratamento para pulgas"
+            },
+            "behavior": {
+                "temperament": "Calma",
+                "energy_level": "Média",
+                "good_with_kids": true,
+                "good_with_other_dogs": true,
+                "good_with_cats": false,
+                "training_level": "Básico",
+                "behavior_notes": "Tímida no início, mas muito carinhosa"
+            },
+            "history": "Abandonada em frente ao abrigo",
+            "adoption_status": "Disponível",
+            "photos": []
+        }
+    ],
+    "cats": [
+        {
+            "id": 1,
+            "name": "Mingau",
+            "breed": "SRD",
+            "age": 3,
+            "gender": "Macho",
+            "size": "Médio",
+            "health": {
+                "vaccinated": true,
+                "dewormed": true,
+                "castrated": true,
+                "special_needs": false,
+                "health_notes": "Saudável, sem problemas de saúde"
+            },
+            "behavior": {
+                "temperament": "Independente",
+                "energy_level": "Média",
+                "good_with_kids": true,
+                "good_with_other_cats": true,
+                "good_with_dogs": false,
+                "litter_trained": true,
+                "behavior_notes": "Gosta de carinho e brincadeiras"
+            },
+            "history": "Resgatado de um abandono",
+            "adoption_status": "Disponível",
+            "photos": []
+        }
+    ],
+    "others": [
+        {
+            "id": 1,
+            "name": "Pipoca",
+            "species": "Coelho",
+            "breed": "Mini Lop",
+            "age": 1,
+            "gender": "Fêmea",
+            "size": "Pequeno",
+            "health": {
+                "vaccinated": false,
+                "dewormed": true,
+                "castrated": true,
+                "special_needs": false,
+                "health_notes": "Saudável, precisa de dieta balanceada"
+            },
+            "behavior": {
+                "temperament": "Curioso",
+                "energy_level": "Alta",
+                "good_with_kids": true,
+                "good_with_other_animals": false,
+                "litter_trained": true,
+                "behavior_notes": "Gosta de correr e pular"
+            },
+            "history": "Doação de um criador",
+            "adoption_status": "Disponível",
+            "photos": []
+        }
+    ]
+} 
